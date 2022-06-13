@@ -1,0 +1,41 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  basicTimeStep 10
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material2 "thymio body"
+      coulombFriction [
+        0.7
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.9189116398411954 0.28201504606971894 -0.2758059316886777 1.619734620186914
+  position -2.1224465567167843 1.7335310651707763 0.5593951972735279
+  follow "thymio2"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Desk {
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
+}
+Floor {
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
+  appearance Parquetry {
+  }
+}
+Thymio2 {
+  hidden position_0_0 0.38119928446605533
+  hidden position_0_1 0.38119926822727274
+  hidden rotation_1 1 0 0 0.3811992844660554
+  hidden rotation_2 1 0 0 0.3811992682272723
+  translation 0.0011158409712377707 0.709979932180472 0.0030910512553700663
+  rotation -0.03679930425352155 0.9993113916849926 0.004749068862391951 0.2568786887034861
+  controller "thymio2_aseba_mr_1+2"
+  controllerArgs "port=8765 id=3 nyMame"
+  window "thymio2"
+}
