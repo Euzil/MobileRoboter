@@ -50,44 +50,76 @@ class PotentialField(Node):
 
         angularZ = math.acos(((x*1)+(y*0))/(math.sqrt(x**2+y**2)))
         print(math.degrees(angularZ))
-        if angularZ > math.radians(40):
+        if angularZ > math.radians(90):
             xVel = 0.0
             if y > 0:
-                self.z_angular_vel = 0.3
-            
+                self.z_angular_vel = 0.99
+                print(angularZ)
+                print("left1")
             else: 
-                self.z_angular_vel = -0.3
-               
-        elif angularZ > math.radians(25):
+                self.z_angular_vel = -1
+                print(angularZ)
+                print("right1")
+        elif angularZ > math.radians(70):
+            xVel = 0.0
+            if y > 0:
+                self.z_angular_vel = 0.8
+                print(angularZ)
+                print("left1")
+            else: 
+                self.z_angular_vel = -0.8
+                print(angularZ)
+                print("right1")
+        elif angularZ > math.radians(55):
+            if y > 0:
+                self.z_angular_vel = 0.5
+                xVel = msg.ranges[0]*0.07
+                print(angularZ)
+                print("left2")
+            else: 
+                self.z_angular_vel = -0.5
+                xVel = msg.ranges[0]*0.07
+                print(angularZ)
+                print("right2")
+        elif angularZ > math.radians(45):
             if y > 0:
                 self.z_angular_vel = 0.3
                 xVel = msg.ranges[0]*0.07
+                print(angularZ)
+                print("left3")
             else: 
                 self.z_angular_vel = -0.3
                 xVel = msg.ranges[0]*0.07
-        elif angularZ > math.radians(15):
-            if y > 0:
-                self.z_angular_vel = 0.1
-                xVel = msg.ranges[0]*0.07
-            else: 
-                self.z_angular_vel = -0.1
-                xVel = msg.ranges[0]*0.07
+                print(angularZ)
+                print("right3")
+    
         else:
             #xVel = msg.ranges[0]*0.087-0.0435
             xVel = msg.ranges[0]*0.07
 
             self.z_angular_vel =0.0
+            print(angularZ)
+            print("slow down")
         if xVel > 0.26: 
-            self.x_vel = 0.26
+           
+            print(xVel)
+            self.x_vel = 0.5
+            print("straight")
+            print(x,angularZ)
+            print("---------------")
         else:
             self.x_vel = xVel
+            
+            print("straight2")
+            print(x,angularZ)
+            print("---------------")
 
        
                 
         
       
 
-        print("direction x: {} y: {} x_Vel: {} angZ: {}".format(x,y, self.x_vel, self.z_angular_vel))
+        #print("direction x: {} y: {} x_Vel: {} angZ: {}".format(x,y, self.x_vel, self.z_angular_vel))
         #self.x_vel = 0.0
         #self.z_angular_vel = 0.0
         # TODO: implement repulsive and attractice potential field  
@@ -114,3 +146,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
